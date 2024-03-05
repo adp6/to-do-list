@@ -1,13 +1,328 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  box-sizing: border-box;
+}
+body{
+  /* #252525 */
+  background-color: #382e30;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.login_input{
+  font-size: 30px;
+  background-color: rgb(203 190 193);
+  color: #3c3234;
+  border-radius: 5px;
+  border: none;
+}
+.submit{
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(181 168 171);
+  color: #3c3234;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 15px;
+}
+.submit_div{
+  text-align: center;
+}
+@keyframes open {
+  0%{
+    height: 0;
+    padding-top: 0px;
+  }
+  20%{
+    height: auto;
+  }
+  100%{
+    padding-top: 10px;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.options{
+  text-align: center;
+  background-color: rgb(231 221 223);
+  color: black;
+  padding: 10px;
+  animation: open 800ms;
+}
+
+.user{
+  text-align: end;
+  display: grid;
+  justify-content: end;
+  margin-bottom: 50px;
+  margin-right: 5px;
+  margin-top: 1%;
+}
+.add_btn{
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  background-color: rgb(181 168 171);
+  font-weight: 600;
+}
+.date{
+  font-weight: 600;
+  background-color: rgb(203 190 193);
+  border: none;
+  margin-right: 1px;
+}
+textarea{
+  background-color: rgb(203 190 193);
+  margin-right: 1px;
+  color: black;
+  font-size: 22px;
+  height: 50px;
+  width: 511px;
+  resize: none;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.user-icon{
+  cursor: pointer;
+  width: 61px;
+}
+.user-input{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.button-remove{
+  color: #584a4a;
+  font-size: 25px;
+  font-weight: 900;
+  background-color:transparent;
+  border: none;
+  cursor: pointer;
+}
+.to-do-list{
+  border: 10px solid #8b6666;
+  background-color: #b99ca2;
+  color: #3c3234;
+  font-weight: 900;
+  padding: 20px 2%;
+  width: 40%;
+  margin-bottom: 200px;
+  border-radius: 8px;
+}
+
+.home{
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item{
+  display: grid;
+  grid-template-columns: 60% auto auto;
+  gap: 5%;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.line-through {
+  position: relative;
+}
+@keyframes lineAnim {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+@keyframes fade {
+  0%{
+    opacity: 100%;
+  }
+  100%{
+    opacity: 0%;
+  }
+}
+.fade{
+  animation: fade 1700ms;
+}
+
+.line-through::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 5px;
+  left: 0;
+  top: calc(50% - 8px/2);
+  background-color: #3c3234;
+  pointer-events: none;
+  animation: lineAnim 1000ms;
+}
+
+
+
+.item::before{
+  content: "•"; 
+  position: absolute;
+  font-size: 30px;
+  left: -15px;
+}
+span{
+  word-break: break-all;
+}
+.login{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.login-field{
+  display: grid;
+
+  gap: 15%;
+}
+
+@media screen and (max-width:1000px) {
+  .to-do-list{
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
+
+/* loading */
+.spinner {
+  font-size: 50px;
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+.spinner.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.spinner .spinner-blade {
+  position: absolute;
+  left: 0.4629em;
+  bottom: 0;
+  width: 0.074em;
+  height: 0.2777em;
+  border-radius: 0.0555em;
+  background-color: transparent;
+  -webkit-transform-origin: center -0.2222em;
+  -ms-transform-origin: center -0.2222em;
+  transform-origin: center -0.2222em;
+  animation: spinner-fade9234 1s infinite linear;
+}
+
+.spinner .spinner-blade:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.spinner .spinner-blade:nth-child(2) {
+  -webkit-animation-delay: 0.083s;
+  animation-delay: 0.083s;
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.spinner .spinner-blade:nth-child(3) {
+  -webkit-animation-delay: 0.166s;
+  animation-delay: 0.166s;
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+
+.spinner .spinner-blade:nth-child(4) {
+  -webkit-animation-delay: 0.249s;
+  animation-delay: 0.249s;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.spinner .spinner-blade:nth-child(5) {
+  -webkit-animation-delay: 0.332s;
+  animation-delay: 0.332s;
+  -webkit-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+
+.spinner .spinner-blade:nth-child(6) {
+  -webkit-animation-delay: 0.415s;
+  animation-delay: 0.415s;
+  -webkit-transform: rotate(150deg);
+  -ms-transform: rotate(150deg);
+  transform: rotate(150deg);
+}
+
+.spinner .spinner-blade:nth-child(7) {
+  -webkit-animation-delay: 0.498s;
+  animation-delay: 0.498s;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.spinner .spinner-blade:nth-child(8) {
+  -webkit-animation-delay: 0.581s;
+  animation-delay: 0.581s;
+  -webkit-transform: rotate(210deg);
+  -ms-transform: rotate(210deg);
+  transform: rotate(210deg);
+}
+
+.spinner .spinner-blade:nth-child(9) {
+  -webkit-animation-delay: 0.664s;
+  animation-delay: 0.664s;
+  -webkit-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  transform: rotate(240deg);
+}
+
+.spinner .spinner-blade:nth-child(10) {
+  -webkit-animation-delay: 0.747s;
+  animation-delay: 0.747s;
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.spinner .spinner-blade:nth-child(11) {
+  -webkit-animation-delay: 0.83s;
+  animation-delay: 0.83s;
+  -webkit-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+
+.spinner .spinner-blade:nth-child(12) {
+  -webkit-animation-delay: 0.913s;
+  animation-delay: 0.913s;
+  -webkit-transform: rotate(330deg);
+  -ms-transform: rotate(330deg);
+  transform: rotate(330deg);
+}
+
+@keyframes spinner-fade9234 {
+  0% {
+    background-color: rgb(203 190 193);
+  }
+
+  100% {
+    background-color: transparent;
+  }
 }

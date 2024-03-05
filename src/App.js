@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import LoginPage from "./components/LoginPage";
+import { HomePage } from './components/HomePage'
+import { useState } from "react";
 function App() {
+
+  let [logged,setLogged] =  useState(window.localStorage.getItem('logged')) 
+  let [user,setUser] = useState(window.localStorage.getItem('name'))
+
+
+  function checkLogin(e){
+    e.preventDefault()
+    let login = e.target[0].value.trim()
+    let password = e.target[1].value.trim()
+    if(password==='bloodborne' && login.toLowerCase()==='john'){
+      window.localStorage.setItem('name',login)
+      window.localStorage.setItem('logged',true)
+      setLogged(true)
+      setUser('john')
+    }
+    else{
+      alert("invalid login or password")
+    }
+  }
+  function exit(){
+    window.localStorage.clear()
+    setLogged(false)
+    setUser('')
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!logged?<LoginPage fn={checkLogin}/>: <HomePage exit={exit}/>}
     </div>
   );
 }
