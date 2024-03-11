@@ -39,6 +39,18 @@ router.post(
     }
 )
 
+router.get(
+    '/tasks',
+    async (req, res) => {
+        try {
+            const tasks = await Task.find({}).sort({ deadline: 1 })
+            res.json(tasks)
+        } catch (e) {
+            res.status(500).json({ message: 'Something go wrong, try again' })
+        }
+    }
+)
+
 router.delete(
     '/tasks/:id',
     async(req,res)=>{
