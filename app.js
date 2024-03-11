@@ -12,7 +12,7 @@ app.use(cors({
 
 app.use(express.json({ extended: true}))
 
-// app.use('/' , require('./routes/task.routes'))
+app.use('/' , require('./routes/task.routes'))
 
 const PORT = config.get('port') || 5000
 
